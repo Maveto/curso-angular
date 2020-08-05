@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { from, fromEvent } from 'rxjs'
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,11 @@ export class AppComponent implements OnInit{
   title = 'curso-angular';
 
   ngOnInit(){
-    const aux = [1,2,3,4,5,6,7,8]
+    const array = from([1,2,3,4,5,6]);
+    array.subscribe(s => console.log('item:', s))
 
+    const aux = fromEvent(document, 'mousemove');
+    aux.subscribe(s => console.log('item:', s.clientX + ', ' + s.clientY))
     
   }
 }
