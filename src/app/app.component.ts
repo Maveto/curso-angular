@@ -9,6 +9,7 @@ import { from, fromEvent } from 'rxjs'
 export class AppComponent implements OnInit{
   
   sw = true;
+  persons = ["maria", "juan", "pedro", "jose", "josefina"]
 
   constructor(){}
 
