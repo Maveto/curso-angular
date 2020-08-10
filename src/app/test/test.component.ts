@@ -15,8 +15,8 @@ import {
 
 @Component({
   selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  template: `<p> Nombre: {{name}}</p>
+<button (click)="onClickSave()">SAVE</button>`
 })
 export class TestComponent implements OnInit, DoCheck, OnChanges, AfterContentInit,
   AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
