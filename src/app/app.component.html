@@ -1,9 +1,8 @@
 <h1>Mauricio</h1>
 
 <div>
-  <app-test 
+  <app-test *ngIf="sw"
   name="Mauricio" 
-  age="21" 
-  description="test" 
   (clickSave)="onClickSaveChild($event)"></app-test>
 </div>
+<button (click)='sw=false;'>Change</button>

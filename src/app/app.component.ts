@@ -7,7 +7,10 @@ import { from, fromEvent } from 'rxjs'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'curso-angular';
+  
+  sw = true;
+
+  constructor(){}
 
   ngOnInit(){    
   }
