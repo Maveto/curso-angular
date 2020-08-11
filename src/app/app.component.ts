@@ -14,6 +14,33 @@ export class AppComponent implements OnInit{
   auxColor = 'red';
   auxClass = true;
 
+  persons1 = [
+    {
+      name:'Juan',
+      lastName:'Perez',
+      age:21,
+      enable: true
+    },
+    {
+      name:'Jose',
+      lastName:'Flores',
+      age:21,
+      enable: true
+    },
+    {
+      name:'Maria',
+      lastName:'Rodriguez',
+      age:21,
+      enable: false
+    },
+    {
+      name:'Gariela',
+      lastName:'Arce',
+      age:21,
+      enable: false
+    }
+  ]
+
   constructor(){}
 
   ngOnInit(){    

@@ -1,5 +1,20 @@
 <h1>Mauricio</h1>
+-----------------------------------------------------------------
+<br>
 
+<div *ngFor="let person of persons1">
+  <div [ngStyle]="{'background': person.enable ? '#179302' : '#C82A1B'}">
+    <persona 
+      [name]="person.name"
+      [lastName]="person.lastName"
+      [age]="person.age"
+      [enable]="person.enable">
+    </persona>
+  </div>
+</div>
+
+<br>
+-----------------------------------------------------------------
 <div>
   <app-test *ngIf="sw"
   name="Mauricio" 
