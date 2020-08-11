@@ -11,6 +11,7 @@ export class AppComponent implements OnInit{
   sw = true;
   persons = ["maria", "juan", "pedro", "jose", "josefina"]
   aux = 2;
+  auxColor = 'red';
 
   constructor(){}
 

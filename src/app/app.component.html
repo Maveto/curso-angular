@@ -16,3 +16,14 @@
   <p *ngSwitchCase="2">el valor es 2</p>
   <p *ngSwitchDefault>el valor no es 3 ni 2</p>
 </div>
+
+<div [ngStyle]="{'border': '1px solid ' + auxColor, 'color': auxColor}">
+  personas
+</div>
+<button (click)="auxColor = 'yellow'">AMARILLO</button>
+<button (click)="auxColor = 'green'">VERDE</button>
+<button (click)="auxColor = 'red'">ROJO</button>
+
+<div [style.color]="auxColor">
+  autos
+</div>
