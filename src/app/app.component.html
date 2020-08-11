@@ -8,7 +8,7 @@
 <button (click)='sw=!sw;'>Change</button>
 
 <div *ngFor="let person of persons; let i = index">
-  <p>{{person}} ---> {{i}}</p>
+  {{person}} ---> {{i}}
 </div> 
 
 <div [ngSwitch]="aux">
@@ -20,10 +20,20 @@
 <div [ngStyle]="{'border': '1px solid ' + auxColor, 'color': auxColor}">
   personas
 </div>
-<button (click)="auxColor = 'yellow'">AMARILLO</button>
-<button (click)="auxColor = 'green'">VERDE</button>
-<button (click)="auxColor = 'red'">ROJO</button>
-
 <div [style.color]="auxColor">
   autos
 </div>
+<button (click)="auxColor = 'yellow'">AMARILLO</button>
+<button (click)="auxColor = 'green'">VERDE</button>
+<button (click)="auxColor = 'red'">ROJO</button>
+<br>
+<br>
+
+<div [ngClass]="{'test1': auxClass, 'test2': !auxClass}">
+  ngClass Example
+</div>
+<div [class.test1]="auxClass">
+  Class Example
+</div>
+<br>
+<button (click)="auxClass = !auxClass">Change Class</button>
