@@ -5,8 +5,14 @@
   name="Mauricio" 
   (clickSave)="onClickSaveChild($event)"></app-test>
 </div>
-<button (click)='sw=false;'>Change</button>
+<button (click)='sw=!sw;'>Change</button>
 
 <div *ngFor="let person of persons; let i = index">
   <p>{{person}} ---> {{i}}</p>
 </div> 
+
+<div [ngSwitch]="aux">
+  <p *ngSwitchCase="3">el valor es 3</p>
+  <p *ngSwitchCase="2">el valor es 2</p>
+  <p *ngSwitchDefault>el valor no es 3 ni 2</p>
+</div>
