@@ -6,18 +6,20 @@ import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
 
 import { PersonaModule } from './modules/persona/persona.module';
+import { ProductoModule } from './modules/producto/producto.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    PersonaModule
+    PersonaModule,
+    ProductoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
