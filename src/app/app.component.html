@@ -56,3 +56,14 @@
 </div>
 <br>
 <button (click)="auxClass = !auxClass">Change Class</button>
+<br>
+
+<h3>PIPES</h3>
+<p>
+  PIPE JSON: {{persons1 | json}}<br><br>
+  PIPE UPPERCASE: {{name | uppercase}}<br><br>
+  PIPE LOWERCASE: {{name | lowercase}}<br><br>
+  PIPE DATE: {{'08/13/2020' | date: "dd/MM/yy"}}<br><br>
+  MY PIPE: {{name | test}}
+</p>
+
