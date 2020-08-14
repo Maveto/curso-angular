@@ -18,6 +18,8 @@ export class AppComponent implements OnInit{
   auxval:number = 2;
   auxexp:number = 1;
 
+  numbers = [1,2,3,4,5,6,7,8,9,10];
+
   persons1 = [
     {
       name:'Juan',
@@ -47,7 +49,17 @@ export class AppComponent implements OnInit{
 
   constructor(){}
 
-  ngOnInit(){    
+  ngOnInit(){
+    console.log(this.pura(2,3));  
+    console.log(this.impura(2,3));    
+  }
+
+  pura(a: number, b: number){
+    return a + b;
+  }
+
+  impura(a:number, b:number){
+    return a + b + Math.random();
   }
 
   onClickSaveChild(event){

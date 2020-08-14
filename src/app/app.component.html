@@ -67,7 +67,11 @@
   MY PIPE: {{name | test}}
 </p>
 
-Value: <input type="text" [(ngModel)]='auxval'><br>
-Exponent: <input type="text" [(ngModel)]='auxexp'><br>
+Value: <input type="number" [(ngModel)]='auxval'><br>
+Exponent: <input type="number" [(ngModel)]='auxexp'><br>
 <p>MY EXPO PIPE: {{auxval | expo: auxexp }}</p>
+
+Pure: {{numbers | pure}} <br>
+Impure: {{numbers | impure}} <br>
+<button (click)="numbers.push(4)">Add</button>
 
