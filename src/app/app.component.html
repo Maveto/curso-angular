@@ -64,7 +64,10 @@
   PIPE UPPERCASE: {{name | uppercase}}<br><br>
   PIPE LOWERCASE: {{name | lowercase}}<br><br>
   PIPE DATE: {{'08/13/2020' | date: "dd/MM/yy"}}<br><br>
-  MY PIPE: {{name | test}}<br><br>
-  MY EXPO PIPE: {{2 | expo }}
+  MY PIPE: {{name | test}}
 </p>
+
+Value: <input type="text" [(ngModel)]='auxval'><br>
+Exponent: <input type="text" [(ngModel)]='auxexp'><br>
+<p>MY EXPO PIPE: {{auxval | expo: auxexp }}</p>
 

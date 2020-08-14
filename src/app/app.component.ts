@@ -15,6 +15,9 @@ export class AppComponent implements OnInit{
   auxClass = true;
   name = 'Mauricio'
 
+  auxval:number = 2;
+  auxexp:number = 1;
+
   persons1 = [
     {
       name:'Juan',
