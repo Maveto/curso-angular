@@ -1,5 +1,8 @@
 <h1>Mauricio</h1>
 
+  <app-test [name]="name" [lastName]="lastName"></app-test>
+  <button (click)="name='maria'; lastName='gutierrez'">Change name, lastname</button><br>
+
 -----------------------------------------------------------------
 <br>
 
@@ -19,12 +22,12 @@
 <app-prod1></app-prod1>
 
 -----------------------------------------------------------------
-<div>
+<!--div>
   <app-test *ngIf="sw"
   name="Mauricio" 
   (clickSave)="onClickSaveChild($event)"></app-test>
 </div>
-<button (click)='sw=!sw;'>Change</button>
+<button (click)='sw=!sw;'>Change</button-->
 
 <div *ngFor="let person of persons; let i = index">
   {{person}} ---> {{i}}
