@@ -1,7 +1,5 @@
 <h1>Mauricio</h1>
-
-  <app-test [name]="name" [lastName]="lastName"></app-test>
-  <button (click)="name='maria'; lastName='gutierrez'">Change name, lastname</button><br>
+<!--
 
 -----------------------------------------------------------------
 <br>
@@ -15,22 +13,22 @@
       [enable]="person.enable">
     </persona>
   </div>
-  <!--br-->
+  <br>
 </div>
 -----------------------------------------------------------------
 
 <app-prod1></app-prod1>
 
 -----------------------------------------------------------------
-<!--div>
+<div>
   <app-test *ngIf="sw"
   name="Mauricio" 
   (clickSave)="onClickSaveChild($event)"></app-test>
 </div>
-<button (click)='sw=!sw;'>Change</button-->
+<button (click)='sw=!sw;'>Change</button>
 
 <div *ngFor="let person of persons; let i = index">
-  {{person}} ---> {{i}}
+  {{person}} ==> {{i}}
 </div> 
 
 <div [ngSwitch]="aux">
@@ -83,4 +81,12 @@ Impure: {{numbers | impure}} <br>
   Mauricio
 </div><br>
 
+-->
+
+<!--app-test [name]="name" [lastName]="lastName"></app-test>
+<button (click)="name='maria'; lastName='gutierrez'">Change name, lastname</button><br><br-->
+
+<div style="border: 1px solid green" (appNgFocus)="directiveAux = 'chauuuuuu'">
+  {{directiveAux}}
+</div>
 
