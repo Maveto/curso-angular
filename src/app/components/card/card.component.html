@@ -1,0 +1,8 @@
+
+<div [ngStyle]="{'background': habilitado ? 'orange' : 'red'}">
+  Nombre: {{nombre | uppercase}} <br>
+  Edad: {{edad}} <br>
+  Habilitado: {{habilitado ? 'si' : 'no'}} <br> <br>
+  <button *ngIf = "habilitado" (click)="clickVotar()" >VOTAR</button>
+  <button disabled *ngIf = "!habilitado">VOTAR</button>
+</div><br>
