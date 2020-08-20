@@ -86,7 +86,12 @@ Impure: {{numbers | impure}} <br>
 <!--app-test [name]="name" [lastName]="lastName"></app-test>
 <button (click)="name='maria'; lastName='gutierrez'">Change name, lastname</button><br><br-->
 
-<div style="border: 1px solid green" (appNgFocus)="directiveAux = 'chauuuuuu'">
+<!--div style="border: 1px solid green" (appNgFocus)="directiveAux = 'chauuuuuu'">
   {{directiveAux}}
+</div-->
+
+<h3>Routing</h3>
+<div style="border: 1px solid red">
+  <router-outlet></router-outlet>
 </div>
 
