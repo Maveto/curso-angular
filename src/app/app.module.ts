@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { PersonaModule } from './modules/persona/persona.module';
 import { ProductoModule } from './modules/producto/producto.module';
 import { AdminModule } from './modules/admin/admin.module';
-import { UserModule } from './modules/user/user.module';
 import { TestPipe } from './pipes/test.pipe';
 import { ExpoPipe } from './pipes/expo.pipe';
 import { PurePipe } from './pipes/pure.pipe';
@@ -21,6 +20,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { Home1Component } from './components/home1/home1.component';
 import { Home2Component } from './components/home2/home2.component';
+import { UserModule } from './modules/user/user.module';
 
 
 
@@ -38,7 +38,7 @@ import { Home2Component } from './components/home2/home2.component';
     AboutComponent,
     AdminComponent,
     Home1Component,
-    Home2Component,
+    Home2Component
   ],
   imports: [
     BrowserModule,
@@ -46,8 +46,8 @@ import { Home2Component } from './components/home2/home2.component';
     PersonaModule,
     ProductoModule,
     AdminModule,
-    UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
