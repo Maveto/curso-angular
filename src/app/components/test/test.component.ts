@@ -20,8 +20,8 @@ import {
   <p>Lastname: {{lastName}}</p>
 <!--button (click)="onClickSave()">SAVE</button--->`
 })
-export class TestComponent implements OnInit, DoCheck, OnChanges, AfterContentInit,
-  AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+export class TestComponent /*implements OnInit, DoCheck, OnChanges, AfterContentInit,
+  AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy*/ {
 
   inter: string;
   @Input() get name(){
@@ -40,47 +40,47 @@ export class TestComponent implements OnInit, DoCheck, OnChanges, AfterContentIn
 
   constructor() { }
 
-  ngOnInit() {
-    console.log('OnInit', this.lastName);
-  }
-
-  ngDoCheck(){
-    console.log('DoCheck');
-  }
-
-  ngOnChanges(changes: SimpleChange){
-
-    if(changes && changes.lastName && changes.lastName.currentValue){  
-      console.log('OnChanges', changes.lastName.currentValue);
-      const aux = "AAAAAAAAA " + changes.lastName.currentValue;
-      this.lastName = aux;
-    }
-  }
-
-  // ngAfterContentInit(){
-  //   console.log('ngAfterContentInit');
+  // ngOnInit() {
+  //   console.log('OnInit', this.lastName);
   // }
 
-  // ngAfterContentChecked(){
-  //   console.log('ngAfterContentChecked');
+  // ngDoCheck(){
+  //   console.log('DoCheck');
   // }
 
-  // ngAfterViewInit(){
-  //   console.log('ngAfterViewInit');
+  // ngOnChanges(changes: SimpleChange){
+
+  //   if(changes && changes.lastName && changes.lastName.currentValue){  
+  //     console.log('OnChanges', changes.lastName.currentValue);
+  //     const aux = "AAAAAAAAA " + changes.lastName.currentValue;
+  //     this.lastName = aux;
+  //   }
   // }
 
-  // ngAfterViewChecked(){
-  //   console.log('ngAfterViewChecked');
-  // }
+  // // ngAfterContentInit(){
+  // //   console.log('ngAfterContentInit');
+  // // }
 
-  // ngOnDestroy(){
-  //   console.log('OnDestroy');
-  // }
+  // // ngAfterContentChecked(){
+  // //   console.log('ngAfterContentChecked');
+  // // }
 
-  onClickSave(){
-    this.clickSave.emit({
-      name: this.name
-    })
-  }
+  // // ngAfterViewInit(){
+  // //   console.log('ngAfterViewInit');
+  // // }
+
+  // // ngAfterViewChecked(){
+  // //   console.log('ngAfterViewChecked');
+  // // }
+
+  // // ngOnDestroy(){
+  // //   console.log('OnDestroy');
+  // // }
+
+  // onClickSave(){
+  //   this.clickSave.emit({
+  //     name: this.name
+  //   })
+  // }
 
 }
