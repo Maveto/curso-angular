@@ -8,14 +8,17 @@ import { Home2Component } from './components/home2/home2.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent,
-  children: [
-    {path: 'home1', component: Home1Component},
-    {path: 'home2', component: Home2Component}
-  ]},
-  {path: 'about', component: AboutComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)}
+  // {path: 'home', component: HomeComponent,
+  // children: [
+  //   {path: 'home1', component: Home1Component},
+  //   {path: 'home2', component: Home2Component}
+  // ]},
+  //{path: 'about', component: AboutComponent},
+  {path: '', redirectTo: 'list', pathMatch: 'full'},
+  {path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)},
+  {path: 'list', loadChildren: () => import('./modules/list/list.module').then(m => m.ListModule)},
+  //{path: 'home', loadChildren: () => import()},
+  //{path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)}
 ];
 
 @NgModule({

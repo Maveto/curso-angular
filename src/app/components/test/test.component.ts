@@ -1,8 +1,8 @@
-import { 
-  Component, 
-  OnInit, 
-  Input, 
-  Output, 
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
   EventEmitter,
   DoCheck,
   OnChanges,
@@ -28,7 +28,7 @@ export class TestComponent /*implements OnInit, DoCheck, OnChanges, AfterContent
     return this.inter;
   }
   set name(name: string){
-    this.inter = "AAAAAAAAAAAA " + name;
+    this.inter = 'AAAAAAAAAAAA ' + name;
   }
 
   @Input() lastName: string;
@@ -50,7 +50,7 @@ export class TestComponent /*implements OnInit, DoCheck, OnChanges, AfterContent
 
   // ngOnChanges(changes: SimpleChange){
 
-  //   if(changes && changes.lastName && changes.lastName.currentValue){  
+  //   if(changes && changes.lastName && changes.lastName.currentValue){
   //     console.log('OnChanges', changes.lastName.currentValue);
   //     const aux = "AAAAAAAAA " + changes.lastName.currentValue;
   //     this.lastName = aux;

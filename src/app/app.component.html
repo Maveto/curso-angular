@@ -6,7 +6,7 @@
 
 <div *ngFor="let person of persons1">
   <div [ngStyle]="{'background': person.enable ? '#179302' : '#C82A1B'}">
-    <persona 
+    <persona
       [name]="person.name"
       [lastName]="person.lastName"
       [age]="person.age"
@@ -22,14 +22,14 @@
 -----------------------------------------------------------------
 <div>
   <app-test *ngIf="sw"
-  name="Mauricio" 
+  name="Mauricio"
   (clickSave)="onClickSaveChild($event)"></app-test>
 </div>
 <button (click)='sw=!sw;'>Change</button>
 
 <div *ngFor="let person of persons; let i = index">
   {{person}} ==> {{i}}
-</div> 
+</div>
 
 <div [ngSwitch]="aux">
   <p *ngSwitchCase="3">el valor es 3</p>
@@ -90,13 +90,34 @@ Impure: {{numbers | impure}} <br>
   {{directiveAux}}
 </div-->
 
-<h3>Routing</h3>
-<div style="border: 1px solid red">
-  <router-outlet></router-outlet>
-</div>
-<br>
-<button routerLink="home">HOME</button> &nbsp;
-<button routerLink="about">ABOUT</button> &nbsp;
-<button routerLink="admin">ADMIN</button> &nbsp;
-<button routerLink="user">USER</button> &nbsp;
+<!--<h3>Routing</h3>-->
+<!--<div style="border: 1px solid red">-->
+<!--  <router-outlet></router-outlet>-->
+<!--</div>-->
+<!--<br>-->
+<!--<button routerLink="home">HOME</button> &nbsp;-->
+<!--<button routerLink="about">ABOUT</button> &nbsp;-->
+<!--<button routerLink="admin">ADMIN</button> &nbsp;-->
+<!--<button routerLink="user">USER</button> &nbsp;-->
 
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar w/ text</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="admin">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="list">List</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
