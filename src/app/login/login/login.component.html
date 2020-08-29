@@ -4,8 +4,14 @@
 <br>
 <button (click)="sw = !sw">SW</button>
 <br>
-<div *ngIf="sw else esFalso">ES VERDAD</div>
+<p>{{sw}}</p>
 <br>
-<ng-template #esFalso>
-  ES FALSO
-</ng-template>
+<p *ngElse="sw">se muestra si es falso</p>
+
+<!--<br>-->
+<!--<br>-->
+<!--<div *ngIf="sw else esFalso">ES VERDAD</div>-->
+<!--<br>-->
+<!--<ng-template #esFalso>-->
+<!--  ES FALSO-->
+<!--</ng-template>-->
