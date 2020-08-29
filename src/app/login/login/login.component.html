@@ -1,2 +1,11 @@
 <p>login works!</p>
 <button mat-raised-button color="primary" routerLink="/pages">Login</button>
+
+<br>
+<button (click)="sw = !sw">SW</button>
+<br>
+<div *ngIf="sw else esFalso">ES VERDAD</div>
+<br>
+<ng-template #esFalso>
+  ES FALSO
+</ng-template>
