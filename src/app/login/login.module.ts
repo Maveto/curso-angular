@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
 import {MatButtonModule} from '@angular/material/button';
 import {NgElseDirective} from '../directives/ng-else.directive';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -12,10 +13,11 @@ import {NgElseDirective} from '../directives/ng-else.directive';
     LoginComponent,
     NgElseDirective
   ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        MatButtonModule,
+        FormsModule
+    ]
 })
 export class LoginModule { }

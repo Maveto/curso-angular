@@ -2,6 +2,30 @@
 <button mat-raised-button color="primary" routerLink="/pages">Login</button>
 
 
+<!--EXAMPLE 1-->
+<!--<div style="display: flex; flex-direction: column;">
+  <input type="text" [(ngModel)]="username">
+  <input type="password" [(ngModel)]="password">
+</div>-->
+
+<!--EXAMPLE 2-->
+<!--<div style="display: flex; flex-direction: column">
+  <form #form="ngForm">
+    <input type="text" name="username" ngModel>
+    <input type="password" name="password" ngModel>
+    <button type="submit">ENVIAR</button>
+  </form>
+</div>
+<button (click)="onLogIn2(form)">LogIn 2</button>-->
+
+<!--EXAMPLE 3-->
+<div style="display: flex; flex-direction: column">
+  <form (ngSubmit)="onLogIn2(form)" #form="ngForm">
+    <input type="text" name="username" ngModel>
+    <input type="password" name="password" ngModel>
+    <button type="submit">ENVIAR</button>
+  </form>
+</div>
 
 
 <!--<br>
