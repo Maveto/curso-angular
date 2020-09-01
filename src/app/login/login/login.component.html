@@ -1,5 +1,5 @@
 <p>login works!</p>
-<button mat-raised-button color="primary" routerLink="/pages">Login</button>
+<button mat-raised-button color="primary" routerLink="/pages">Login</button> <br>
 
 
 <!--EXAMPLE 1-->
@@ -19,12 +19,26 @@
 <button (click)="onLogIn2(form)">LogIn 2</button>-->
 
 <!--EXAMPLE 3-->
-<div style="display: flex; flex-direction: column">
+<!--<div style="display: flex; flex-direction: column">
   <form (ngSubmit)="onLogIn2(form)" #form="ngForm">
     <input type="text" name="username" ngModel>
     <input type="password" name="password" ngModel>
     <button type="submit">ENVIAR</button>
   </form>
+</div>-->
+
+NAME: <input class="form-control" type="text" required minlength="3" maxlength="5" ngModel #name="ngModel" style="max-width: 200px">
+
+<div *ngIf="name.invalid && (name.touched || name.dirty)" class="alert alert-danger" style="max-width: 370px; text-align: center">
+  <div *ngIf="name.errors.required">
+    NAME IS REQUIRED
+  </div>
+  <div *ngIf="name.errors.minlength">
+    NAME MUST HAVE AT LEAST 3 CHARACTERS
+  </div>
+  <div *ngIf="name.errors.maxlength">
+    NAME MUST HAVE MAX 5 CHARACTERS
+  </div>
 </div>
 
 
