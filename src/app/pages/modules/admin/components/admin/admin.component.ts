@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../../../../services/product.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
 
   //nameControl = new FormControl();
 
   productForm: FormGroup;
+  productSubs: Subscription;
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
@@ -31,7 +33,7 @@ export class AdminComponent implements OnInit {
 
   onEnviar2(): void{
     console.log('FORM GROUP', this.productForm.value);
-    this.productService.addProduct(this.productForm.value).subscribe(
+    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
       res => {
         console.log(res);
       },
@@ -39,6 +41,11 @@ export class AdminComponent implements OnInit {
         console.log('ERROR DE SERRVIDOR');
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    // tslint:disable-next-line:no-unused-expression
+    this.productSubs ? this.productSubs.unsubscribe() : '';
   }
 
 }
