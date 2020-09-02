@@ -6,6 +6,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ProductService} from '../../../services/product.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import {ProductService} from '../../../services/product.service';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     ProductService

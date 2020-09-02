@@ -10,10 +10,12 @@ import {Subscription} from 'rxjs';
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  //nameControl = new FormControl();
+  // nameControl = new FormControl();
 
   productForm: FormGroup;
+  products = [];
   productSubs: Subscription;
+  productSubsGet: Subscription;
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
@@ -25,6 +27,11 @@ export class AdminComponent implements OnInit, OnDestroy {
       price: '',
       title: ''
     });
+
+    this.productSubsGet = this.productService.getProducts().subscribe(res => {
+        Object.entries(res).map(p => this.products.push(p[1]));
+      }
+    );
   }
 
   /*onEnviar(): void{
@@ -38,7 +45,7 @@ export class AdminComponent implements OnInit, OnDestroy {
         console.log(res);
       },
       error => {
-        console.log('ERROR DE SERRVIDOR');
+        console.log('ERROR DE SERRVIDOR', error);
       }
     );
   }
@@ -46,6 +53,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // tslint:disable-next-line:no-unused-expression
     this.productSubs ? this.productSubs.unsubscribe() : '';
+    // tslint:disable-next-line:no-unused-expression
+    this.productSubsGet ? this.productSubsGet.unsubscribe() : '';
   }
 
 }
