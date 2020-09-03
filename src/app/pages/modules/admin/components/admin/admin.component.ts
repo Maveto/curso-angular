@@ -14,12 +14,16 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   productForm: FormGroup;
   products = [];
-  productSubs: Subscription;
+  productSubsAdd: Subscription;
   productSubsGet: Subscription;
+  productSubsDelete: Subscription;
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
   ngOnInit(): void {
+
+    this.loadProducts();
+
     this.productForm = this.formBuilder.group({
       description: ['', [Validators.required, Validators.minLength(3)]],
       imageUrl: '',
@@ -27,9 +31,12 @@ export class AdminComponent implements OnInit, OnDestroy {
       price: '',
       title: ''
     });
+  }
 
+  loadProducts(): void{
+    this.products = [];
     this.productSubsGet = this.productService.getProducts().subscribe(res => {
-        Object.entries(res).map(p => this.products.push(p[1]));
+        Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
       }
     );
   }
@@ -40,9 +47,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   onEnviar2(): void{
     console.log('FORM GROUP', this.productForm.value);
-    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
+    this.productSubsAdd = this.productService.addProduct(this.productForm.value).subscribe(
       res => {
         console.log(res);
+        this.loadProducts();
       },
       error => {
         console.log('ERROR DE SERRVIDOR', error);
@@ -50,9 +58,21 @@ export class AdminComponent implements OnInit, OnDestroy {
     );
   }
 
+  onDelete(id: any): void{
+    this.productService.deleteProduct(id).subscribe(
+      res => {
+        console.log('RESPONSE', res);
+        this.loadProducts();
+      },
+      error => {
+        console.log('ERROR', error);
+      }
+    );
+  }
+
   ngOnDestroy(): void {
     // tslint:disable-next-line:no-unused-expression
-    this.productSubs ? this.productSubs.unsubscribe() : '';
+    this.productSubsAdd ? this.productSubsAdd.unsubscribe() : '';
     // tslint:disable-next-line:no-unused-expression
     this.productSubsGet ? this.productSubsGet.unsubscribe() : '';
   }
