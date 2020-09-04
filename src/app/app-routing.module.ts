@@ -9,11 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
   {path: 'list', loadChildren: () => import('./modules/list/list.module').then(m => m.ListModule)}
 ];*/
 
-const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
-  {path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
