@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {from, fromEvent, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {MascotServiceService} from './services/mascot-service.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
