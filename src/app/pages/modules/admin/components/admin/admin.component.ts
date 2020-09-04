@@ -17,10 +17,15 @@ export class AdminComponent implements OnInit, OnDestroy {
   productSubsAdd: Subscription;
   productSubsGet: Subscription;
   productSubsDelete: Subscription;
+  productSubsUpdate: Subscription;
+  editId: any;
+
+  edit: boolean;
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.edit = false;
 
     this.loadProducts();
 
@@ -59,7 +64,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   onDelete(id: any): void{
-    this.productService.deleteProduct(id).subscribe(
+    this.productSubsDelete = this.productService.deleteProduct(id).subscribe(
       res => {
         console.log('RESPONSE', res);
         this.loadProducts();
@@ -70,11 +75,39 @@ export class AdminComponent implements OnInit, OnDestroy {
     );
   }
 
+  onUpdateProduct(): void {
+    this.productSubsUpdate = this.productService.updateProduct(this.productForm.value, this.editId).subscribe(
+      res => {
+        console.log('RES UPDATE', res);
+        this.loadProducts();
+      },
+      error => {
+        console.log('ERROR UPDATE', error);
+      }
+    );
+  }
+
+  onEdit(product: any): void{
+    console.log(product);
+    this.editId = product.id;
+    this.productForm.patchValue(product);
+    this.edit = true;
+  }
+
   ngOnDestroy(): void {
     // tslint:disable-next-line:no-unused-expression
     this.productSubsAdd ? this.productSubsAdd.unsubscribe() : '';
     // tslint:disable-next-line:no-unused-expression
     this.productSubsGet ? this.productSubsGet.unsubscribe() : '';
+    // tslint:disable-next-line:no-unused-expression
+    this.productSubsDelete ? this.productSubsDelete.unsubscribe() : '';
+    // tslint:disable-next-line:no-unused-expression
+    this.productSubsUpdate ? this.productSubsUpdate.unsubscribe() : '';
+
+  }
+
+  notEdit(): void{
+    this.edit = false;
   }
 
 }

@@ -9,8 +9,10 @@
   <mat-drawer #drawer class="example-sidenav" mode="over" style="width: 300px; height: 100%" [position]="'end'">
     <!--EXAMPLE 2-->
     <form [formGroup]="productForm" style="display: flex; flex-direction: column; max-width: 300px; margin: 20px">
-      DESCRIPTION:
-      <input formControlName="description" type="text">
+      <mat-form-field appearance="fill">
+        <mat-label>DESCRIPTION:</mat-label>
+        <input matInput formControlName="description" type="text">
+      </mat-form-field>
       <div *ngIf="productForm.get('description').invalid && (productForm.get('description').touched || productForm.get('description').dirty)" class=" alert alert-danger">
         <div *ngIf="productForm.get('description').errors.required">
           DESCRIPTION REQUIRED
@@ -20,21 +22,33 @@
         </div>
       </div>
 
-      IMAGE URL:
-      <input formControlName="imageUrl" type="text">
-      OWNER ID:
-      <input formControlName="ownerId" type="text">
-      PRICE:
-      <input formControlName="price" type="number">
-      TITLE:
-      <input formControlName="title" type="text">
+      <mat-form-field appearance="fill">
+        <mat-label>IMAGE URL:</mat-label>
+        <input matInput formControlName="imageUrl" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>OWNER ID:</mat-label>
+        <input matInput formControlName="ownerId" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>PRICE:</mat-label>
+        <input matInput formControlName="price" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>TITLE:</mat-label>
+        <input matInput formControlName="title" type="text">
+      </mat-form-field>
     </form>
-    <button (click)="onEnviar2()" style="margin-left: 100px">ENVIAR</button>
+    <button *ngIf="!edit" mat-stroked-button color="primary" (click)="onEnviar2()" style="margin-left: 100px">CREAR</button>
+    <button *ngIf="edit" mat-stroked-button color="primary" (click)="onUpdateProduct()" style="margin-left: 100px">EDITAR</button>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <button type="button" mat-raised-button color="primary" (click)="drawer.toggle()">
-      CREATE NEW PRODUCT
+    <button type="button" mat-raised-button color="primary" (click)="drawer.toggle(); notEdit();">
+      CREATE NUEVO PRODUCTO
     </button>
   </div>
 
@@ -52,7 +66,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>EDITAR</button>
+          <button mat-button (click)="onEdit(product); drawer.toggle()">EDITAR</button>
           <button mat-button (click)="onDelete(product.id)">ELIMINAR</button>
         </mat-card-actions>
       </mat-card>
