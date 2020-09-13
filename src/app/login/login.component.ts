@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogIn(form: any): void{
-    this.authService.login(form.value).subscribe(
+    this.authService.login({...form.value, returnSecureToken: true}).subscribe(
       res => {
         console.log('LOGIN RESPONSE', res);
       },

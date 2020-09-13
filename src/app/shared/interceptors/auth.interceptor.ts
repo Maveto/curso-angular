@@ -17,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (token){
       request = request.clone({
-        url: `${request.url}`
+        url: `${request.url}?auth=${token}`
       });
     }
 
