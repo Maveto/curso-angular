@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
 import {Subscription} from 'rxjs';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -22,7 +23,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   edit: boolean;
 
-  constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.edit = false;
@@ -40,7 +41,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   loadProducts(): void{
     this.products = [];
-    const userId = localStorage.getItem('userId');
+    const userId = this.authService.getUserId();
     this.productSubsGet = this.productService.getProductsById(userId).subscribe(res => {
         Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
       }
@@ -55,7 +56,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     console.log('FORM GROUP', this.productForm.value);
     this.productSubsAdd = this.productService.addProduct({
       ...this.productForm.value,
-      ownerId: localStorage.getItem('userId')
+      ownerId: this.authService.getUserId()
     }).subscribe(
       res => {
         console.log(res);
@@ -82,7 +83,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   onUpdateProduct(): void {
     this.productSubsUpdate = this.productService.updateProduct({
       ...this.productForm.value,
-      ownerId: localStorage.getItem('userId')
+      ownerId: this.authService.getUserId()
     }, this.editId).subscribe(
       res => {
         console.log('RES UPDATE', res);
@@ -115,6 +116,13 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   notEdit(): void{
     this.edit = false;
+    this.editId = '';
+    this.productForm.patchValue({
+      description: '',
+      imageUrl: '',
+      price: '',
+      title: ''
+    });
   }
 
 }

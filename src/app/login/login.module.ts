@@ -8,7 +8,6 @@ import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
-import {AuthService} from '../shared/services/auth.service';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
@@ -28,9 +27,6 @@ const routes: Routes = [
     MatFormFieldModule,
     MatCardModule,
     MatInputModule
-  ],
-  providers: [
-    AuthService
   ]
 })
 export class LoginModule { }
