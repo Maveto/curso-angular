@@ -28,11 +28,6 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>OWNER ID:</mat-label>
-        <input matInput formControlName="ownerId" type="text">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
         <mat-label>PRICE:</mat-label>
         <input matInput formControlName="price" type="number">
       </mat-form-field>
@@ -46,9 +41,9 @@
     <button *ngIf="edit" mat-stroked-button color="primary" (click)="onUpdateProduct()" style="margin-left: 100px">EDITAR</button>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
+  <div class="example-sidenav-content" style="padding-top: 20px; padding-left: 20px">
     <button type="button" mat-raised-button color="primary" (click)="drawer.toggle(); notEdit();">
-      CREATE NUEVO PRODUCTO
+      CREAR NUEVO PRODUCTO
     </button>
   </div>
 

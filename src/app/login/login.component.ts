@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     this.authService.login({...form.value, returnSecureToken: true}).subscribe(
       res => {
         console.log('LOGIN RESPONSE', res);
+        this.router.navigate(['pages']);
       },
       error => {
         console.log('LOGIN ERROR:', error.error.error.message);

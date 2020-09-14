@@ -40,7 +40,8 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   loadProducts(): void{
     this.products = [];
-    this.productSubsGet = this.productService.getProducts().subscribe(res => {
+    const userId = localStorage.getItem('userId');
+    this.productSubsGet = this.productService.getProductsById(userId).subscribe(res => {
         Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
       }
     );
@@ -52,7 +53,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   onEnviar2(): void{
     console.log('FORM GROUP', this.productForm.value);
-    this.productSubsAdd = this.productService.addProduct(this.productForm.value).subscribe(
+    this.productSubsAdd = this.productService.addProduct({
+      ...this.productForm.value,
+      ownerId: localStorage.getItem('userId')
+    }).subscribe(
       res => {
         console.log(res);
         this.loadProducts();
@@ -76,7 +80,10 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   onUpdateProduct(): void {
-    this.productSubsUpdate = this.productService.updateProduct(this.productForm.value, this.editId).subscribe(
+    this.productSubsUpdate = this.productService.updateProduct({
+      ...this.productForm.value,
+      ownerId: localStorage.getItem('userId')
+    }, this.editId).subscribe(
       res => {
         console.log('RES UPDATE', res);
         this.loadProducts();
