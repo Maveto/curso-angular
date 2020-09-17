@@ -6,6 +6,8 @@ import { HomeComponent } from './home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {ProductService} from '../../shared/services/product.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import {ProductService} from '../../shared/services/product.service';
     CommonModule,
     HomeRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatTableModule
   ],
   providers: [ProductService]
 })

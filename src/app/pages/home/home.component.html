@@ -1,21 +1,51 @@
-<!--<p>home works!</p>-->
 
-<div class="row" style="margin: 10px">
-  <div *ngFor="let product of products" class="col-12 col-sm-4 col-md-3 col-xl-3" style="display: flex; justify-content: center; margin-top: 20px">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>{{product.title}}</mat-card-title>
-        <mat-card-subtitle>{{product.price}} Bs</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]="product.imageUrl" alt="Image">
-      <mat-card-content>
-        <p>
-          {{product.description}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="onComprar(product)">COMPRAR</button>
-      </mat-card-actions>
-    </mat-card>
+<mat-drawer-container class="example-container" autosize style="width: 100%">
+  <mat-drawer #drawer class="example-sidenav" mode="side" style="width: 300px; height: 100%" [position]="'end'">
+    <h3 style="margin-left: 30%; margin-top: 20px; font-family: Serif; color: indianred;"><u>CARRITO</u></h3>
+
+    <table style="margin: 15%; width: 70%">
+      <tr>
+        <td style="border: 1px solid black; text-align: center; color: red">Name</td>
+        <td style="border: 1px solid black; text-align: center; color: red">Price</td>
+      </tr>
+
+      <tr *ngFor="let product of cart">
+        <td style="border: 1px solid black; text-align: center">{{product.title}}</td>
+        <td style="border: 1px solid black; text-align: center">{{product.price}}</td>
+      </tr>
+
+      <tr>
+        <td style="border: 1px solid black; text-align: center; color: red">TOTAL</td>
+        <td style="border: 1px solid black; text-align: center;">{{totalPrice}}</td>
+      </tr>
+
+    </table>
+  </mat-drawer>
+
+  <div class="example-sidenav-content" style="padding-top: 20px; padding-left: 20px">
+    <button type="button" mat-raised-button color="primary" (click)="drawer.toggle()">
+      CARRITO
+    </button>
   </div>
-</div>
+
+  <div class="row" style="margin: 10px">
+    <div *ngFor="let product of products" class="col-12 col-sm-4 col-md-3 col-xl-3" style="display: flex; justify-content: center; margin-top: 20px">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.price}} Bs</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.imageUrl" alt="Image">
+        <mat-card-content>
+          <p>
+            {{product.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="onComprar(product)">COMPRAR</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</mat-drawer-container>

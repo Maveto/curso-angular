@@ -13,7 +13,7 @@ export const initialState: HomeState = {
 
 const featureReducer = createReducer(
   initialState,
-  on(AddProduct, (state, {product}) => ({...state, items: state.items.concat([product])}))
+  on(AddProduct, (state, {product}) => ({...state, items: state.items.concat([product]), totalAmount: (state.totalAmount + 1)}))
 );
 
 export function reducer(state: HomeState, action: Action): any {

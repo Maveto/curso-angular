@@ -11,12 +11,24 @@ import {AddProduct} from './store/home.actions';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+  totalPrice = 0;
   products = [];
+  cart = [];
   productSubs: Subscription;
+  cartSubs: Subscription;
 
   constructor(private store: Store<any>, private productService: ProductService) { }
 
   ngOnInit(): void {
+
+    this.cartSubs = this.store.select(s => s.home).subscribe(res => {
+      this.cart = Object.assign([], res.items);
+      this.totalPrice = 0;
+      for (const p of this.cart){
+        this.totalPrice += p.price;
+      }
+    });
+
     this.productSubs = this.productService.getProducts().subscribe(res => {
         Object.entries(res).map(p => this.products.push(p[1]));
       }
@@ -26,9 +38,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // tslint:disable-next-line:no-unused-expression
     this.productSubs ? this.productSubs.unsubscribe() : '';
+    // tslint:disable-next-line:no-unused-expression
+    this.cartSubs ? this.cartSubs.unsubscribe() : '';
   }
 
-  onComprar(product: any): void {
-    this.store.dispatch(AddProduct({product: product}));
+  onComprar(productC: any): void {
+    this.store.dispatch(AddProduct({product: productC}));
   }
 }
