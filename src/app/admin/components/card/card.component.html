@@ -1,0 +1,13 @@
+<mat-card class="example-card" [ngStyle]="{'background': perrito.age < 3 ? 'orange' : 'red'}">
+  <img mat-card-image [src]="perrito.urlImage" alt="Image">
+  <mat-card-content>
+    <p>Name: {{perrito.name | uppercase}}</p>
+    <p>Color: {{perrito.color}}</p>
+    <p>Age: {{perrito.age}}</p>
+    {{perrito.vaccinated}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onEdit(perrito);">EDITAR</button>
+    <button mat-button (click)="onDelete(perrito.id)">ELIMINAR</button>
+  </mat-card-actions>
+</mat-card>

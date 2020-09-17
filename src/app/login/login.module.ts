@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './login.component';
 import {MatButtonModule} from '@angular/material/button';
-import {NgElseDirective} from '../shared/directives/ng-else.directive';
 import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
@@ -16,8 +15,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    NgElseDirective
+    LoginComponent
   ],
   imports: [
     FormsModule,

@@ -1,10 +1,10 @@
 export const environment = {
   production: true,
   app: {
-    apiBaseUrl: 'https://angular-course-b590e.firebaseio.com'
+    apiBaseUrl: 'https://veterinary-test.firebaseio.com'
   },
   auth: {
     apiBaseUrl: 'https://identitytoolkit.googleapis.com',
-    key: 'AIzaSyC3by8MObe4NzgZIZMjEwJ5FeZnu4SgNyk'
+    key: 'AIzaSyCkBXq7Xac2_joYKwZ8O-PpgY-QkyQAO_I'
   }
 };

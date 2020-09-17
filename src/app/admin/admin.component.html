@@ -1,0 +1,37 @@
+
+<app-header [report]="report"></app-header>
+
+<mat-drawer-container class="example-container" autosize style="width: 100%">
+  <mat-drawer [opened]="opened" class="example-sidenav" mode="side" style="width: 300px; height: 100%" [position]="'end'">
+    <app-form [animalForm]="animalForm" [edit]="edit"></app-form>
+  </mat-drawer>
+
+  <div class="example-sidenav-content" style="padding-top: 20px; padding-left: 20px">
+    <button type="button" mat-raised-button color="primary" (click)="opened=!opened; notEdit();">
+      ADD
+    </button>
+    <button type="button" mat-raised-button color="primary" style="margin-left: 20px" (click)="report = !report">
+      REPORT
+    </button>
+  </div>
+
+  <div style="background: cadetblue; width: 200px; text-align: center; margin: 50px;padding: 10px">
+    <h4>VACCINATED</h4>
+  </div>
+
+  <div class="row" style="margin: 10px">
+    <div *ngFor="let perrito of vacinated" class="col-12 col-sm-4 col-md-3 col-xl-3" style="display: flex; justify-content: center; margin-top: 20px">
+      <app-card [perrito]="perrito"></app-card>
+    </div>
+  </div>
+
+  <div style="background: cadetblue; width: 200px; text-align: center; margin: 50px;padding: 10px">
+    <h4>NOT VACCINATED</h4>
+  </div>
+
+  <div class="row" style="margin: 10px">
+    <div *ngFor="let perrito of notVaccinated" class="col-12 col-sm-4 col-md-3 col-xl-3" style="display: flex; justify-content: center; margin-top: 20px">
+      <app-card [perrito]="perrito"></app-card>
+    </div>
+  </div>
+</mat-drawer-container>

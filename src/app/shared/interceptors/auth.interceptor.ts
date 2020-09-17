@@ -24,14 +24,6 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    /*if (token){
-      request = request.clone({
-        setHeaders: {
-          Authorizaion: 'Bearer ' + token
-        }
-      });
-    }*/
-
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401){

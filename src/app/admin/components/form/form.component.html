@@ -1,0 +1,44 @@
+
+<form [formGroup]="animalForm" style="display: flex; flex-direction: column; max-width: 300px; margin: 20px">
+  <mat-form-field appearance="fill">
+    <mat-label>NAME:</mat-label>
+    <input matInput formControlName="name" type="text">
+  </mat-form-field>
+  <div *ngIf="animalForm.get('name').invalid && (animalForm.get('name').touched || animalForm.get('name').dirty)" class=" alert alert-danger">
+    <div *ngIf="animalForm.get('name').errors.required">
+      NAME REQUIRED
+    </div>
+    <div *ngIf="animalForm.get('name').errors.minlength">
+      NAME MUST HAVE AT LEAST 3 CHARACTERS
+    </div>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>AGE:</mat-label>
+    <input matInput formControlName="age" type="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>COLOR:</mat-label>
+    <input matInput formControlName="color" type="text">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>IMAGE URL:</mat-label>
+    <input matInput formControlName="urlImage" type="text">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>VACCINATED:</mat-label>
+    <input matInput formControlName="vaccinated" type="text">
+  </mat-form-field>
+  <div *ngIf="animalForm.get('vaccinated').invalid && (animalForm.get('vaccinated').touched || animalForm.get('vaccinated').dirty)" class=" alert alert-danger">
+    <div *ngIf="animalForm.get('vaccinated').errors.required">
+      VACCINATED REQUIRED
+    </div>
+  </div>
+</form>
+<button *ngIf="!edit" mat-stroked-button color="primary" style="margin-left: 100px" (click)="onEnviar()">SAVE</button>
+<button *ngIf="edit" mat-stroked-button color="primary"  style="margin-left: 100px" (click)="onUpdateProduct()">SAVE</button>
+
+
